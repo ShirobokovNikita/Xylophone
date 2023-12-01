@@ -21,6 +21,8 @@
 		ADE587F722CB513D007F0F9A /* F.wav in Resources */ = {isa = PBXBuildFile; fileRef = ADE587F022CB513D007F0F9A /* F.wav */; };
 		ADE587F822CB513D007F0F9A /* B.wav in Resources */ = {isa = PBXBuildFile; fileRef = ADE587F122CB513D007F0F9A /* B.wav */; };
 		ADE587F922CB513D007F0F9A /* D.wav in Resources */ = {isa = PBXBuildFile; fileRef = ADE587F222CB513D007F0F9A /* D.wav */; };
+		E0DF4DF42B1A9F4400BDEEEA /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF4DF32B1A9F4400BDEEEA /* Note.swift */; };
+		E0DF4DF62B1AA06900BDEEEA /* NoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF4DF52B1AA06900BDEEEA /* NoteButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		ADE587F022CB513D007F0F9A /* F.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = F.wav; sourceTree = "<group>"; };
 		ADE587F122CB513D007F0F9A /* B.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = B.wav; sourceTree = "<group>"; };
 		ADE587F222CB513D007F0F9A /* D.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D.wav; sourceTree = "<group>"; };
+		E0DF4DF32B1A9F4400BDEEEA /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		E0DF4DF52B1AA06900BDEEEA /* NoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,8 @@
 				AD937BF522C61DBB002E2D88 /* AppDelegate.swift */,
 				AD937BF722C61DBB002E2D88 /* SceneDelegate.swift */,
 				AD937BF922C61DBB002E2D88 /* ViewController.swift */,
+				E0DF4DF52B1AA06900BDEEEA /* NoteButton.swift */,
+				E0DF4DF32B1A9F4400BDEEEA /* Note.swift */,
 				AD937BFB22C61DBB002E2D88 /* Main.storyboard */,
 				AD937BFE22C61DBE002E2D88 /* Assets.xcassets */,
 				ADE587EA22CB5121007F0F9A /* LaunchScreen.storyboard */,
@@ -181,6 +187,8 @@
 				AD937BFA22C61DBB002E2D88 /* ViewController.swift in Sources */,
 				AD937BF622C61DBB002E2D88 /* AppDelegate.swift in Sources */,
 				AD937BF822C61DBB002E2D88 /* SceneDelegate.swift in Sources */,
+				E0DF4DF42B1A9F4400BDEEEA /* Note.swift in Sources */,
+				E0DF4DF62B1AA06900BDEEEA /* NoteButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
