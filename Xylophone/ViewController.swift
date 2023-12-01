@@ -1,6 +1,10 @@
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
+    
+    var audioPlayer: AVAudioPlayer?
+    let notes = ["C", "D", "E", "F", "G", "A", "B"]
     
     private enum Colors: CaseIterable {
         case red, orange, yellow, green, cyan, blue, purple
@@ -29,7 +33,7 @@ class ViewController: UIViewController {
         let verticalStack = UIStackView()
         verticalStack.axis = .vertical
         verticalStack.spacing = 8 // Adjust this value if needed
-        verticalStack.distribution = .fillProportionally
+        verticalStack.distribution = .fillEqually
         verticalStack.alignment = .center
         verticalStack.translatesAutoresizingMaskIntoConstraints = false
         return verticalStack
@@ -56,33 +60,33 @@ class ViewController: UIViewController {
     
     private func createViews() {
         let totalCount = CGFloat(Colors.allCases.count)
-        let notes = ["C", "D", "E", "F", "G", "A", "B"]
         for (index, color) in Colors.allCases.enumerated() {
-            let colorView = UIView()
-            colorView.backgroundColor = color.color
-            colorView.translatesAutoresizingMaskIntoConstraints = false
-            verticalStack.addArrangedSubview(colorView)
-            
-            let noteLabel = UILabel()
-            noteLabel.text = notes[index]
-            noteLabel.textColor = .white
-            noteLabel.font = .systemFont(ofSize: 35)
-            noteLabel.translatesAutoresizingMaskIntoConstraints = false
-            colorView.addSubview(noteLabel)
-            
-            // Центрируем метку в colorView
-                   NSLayoutConstraint.activate([
-                       noteLabel.centerXAnchor.constraint(equalTo: colorView.centerXAnchor),
-                       noteLabel.centerYAnchor.constraint(equalTo: colorView.centerYAnchor)
-                   ])
-            
-            // Меняем значение multiplier на основе индекса каждого colorView
-            // Например, первый элемент будет иметь multiplier 1, а последний - 0.5
+            let button = UIButton(type: .system)
+            button.backgroundColor = color.color
+            button.setTitleColor(.white, for: .normal)
+            button.setTitle(notes[index], for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 25)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            verticalStack.addArrangedSubview(button)
+            button.addTarget(self, action: #selector(playSound(_:)), for: .touchUpInside)
             let multiplier = 1 - (CGFloat(index) / totalCount * 0.2)
             
             NSLayoutConstraint.activate([
-                colorView.widthAnchor.constraint(equalTo: verticalStack.widthAnchor, multiplier: multiplier)
+                button.widthAnchor.constraint(equalTo: verticalStack.widthAnchor, multiplier: multiplier)
             ])
         }
     }
+    
+    @objc func playSound(_ sender: UIButton) {
+        let noteName = sender.titleLabel?.text // Использование tag для определения индекса ноты
+        do {
+            guard let url = Bundle.main.url(forResource: noteName, withExtension: "wav") else { return }
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            guard let player = audioPlayer else { return }
+            player.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
 }
