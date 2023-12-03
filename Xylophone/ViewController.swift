@@ -24,12 +24,18 @@ class ViewController: UIViewController {
            return stack
        }()
        
-       override func viewDidLoad() {
-           super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        do {
+//            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+//            try AVAudioSession.sharedInstance().setActive(true)
+//        } catch {
+//            print("Error setting up audio session: \(error)")
+//        }
            view.backgroundColor = .white
            view.addSubview(verticalStack)
-           createViews()
            setupVerticalStackConstraints()
+           createViews()
        }
        
        private func setupVerticalStackConstraints() {
@@ -42,14 +48,14 @@ class ViewController: UIViewController {
            ])
        }
        
-       private func createViews() {
-           for (index, note) in notes.enumerated() {
-               let button = NoteButton(type: .system)
-               button.configure(with: note, index: index, totalCount: CGFloat(notes.count))
-               verticalStack.addArrangedSubview(button)
-               button.addTarget(self, action: #selector(playSound(_:)), for: .touchUpInside)
-           }
-       }
+    private func createViews() {
+        for (index, note) in notes.enumerated() {
+            let button = NoteButton(type: .system)
+            verticalStack.addArrangedSubview(button)
+            button.configure(with: note, index: index, totalCount: CGFloat(notes.count), verticalStack: verticalStack)
+            button.addTarget(self, action: #selector(playSound(_:)), for: .touchUpInside)
+        }
+    }
        
        @objc func playSound(_ sender: UIButton) {
            let noteName = sender.titleLabel?.text

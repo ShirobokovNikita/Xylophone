@@ -9,7 +9,7 @@
 import UIKit
 
 class NoteButton: UIButton {
-    func configure(with note: Note, index: Int, totalCount: CGFloat) {
+    func configure(with note: Note, index: Int, totalCount: CGFloat, verticalStack: UIStackView) {
         self.tag = index
         self.backgroundColor = note.color
         self.setTitleColor(.white, for: .normal)
@@ -19,7 +19,7 @@ class NoteButton: UIButton {
         
         let multiplier = 1 - (CGFloat(index) / totalCount * 0.2)
         NSLayoutConstraint.activate([
-            self.widthAnchor.constraint(equalToConstant: multiplier * UIScreen.main.bounds.width)
+            self.widthAnchor.constraint(equalTo: verticalStack.widthAnchor, multiplier: multiplier)
         ])
     }
 }
